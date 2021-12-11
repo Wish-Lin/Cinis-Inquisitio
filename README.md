@@ -8,7 +8,7 @@ Cinis Inquisitio is a simple Conway's Game of Life ash cleaning/analyzing progra
 **After downloading, please read "Usermanual.txt" for details on how to use this program**
 
 
-# v0.2 note: 
+# v0.9 note: 
 
 This version of the program is still in not optimized yet, thus it can only deal with ashes with a bounding box smaller than 1000x1000, anything bigger than that will almost always result in it crashing.
 
@@ -16,4 +16,4 @@ This size limit will be improved in the next version once it is more optimized.
 
 Depending on your computer's efficiency, the program may take a while to finish the analyzing.
 
-v0.2 Release date: 2021/12/11
+v0.9 Release date: 2021/12/11
