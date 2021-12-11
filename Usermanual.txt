@@ -1,0 +1,63 @@
+Before everything begins, first you would have to download Golly, a Conway's Game of Life simulator(which you probably already do if you want to use this toolkit in the first place)
+Other programs that output RLE format when you copy patterns from them should also work, but I haven't tried those, so no guarantees can be made.
+
+Also I am not an English native speaker, so please forgive me if I make any langauge related errors. Thank you.
+
+
+
+
+
+Step 1: Copy the ash you want to analyze
+
+The ash should have a bounding box smaller than 1000x1000 for this version(sorry for the inconvenice)
+
+*********
+When copying the ash, you need to leave some space at all four sides, which means no ash object should be directly in contact with the selection border. 
+This is to prevent unexpected errors during the analyzing process since C++ arrays are weird in out of bound regions.
+*********
+
+
+
+
+Step 2: Run "Clear.exe" to clear the I/O txt's datas from the last run.
+
+*I/O txt: input(RLE).txt, input(Plaintext).txt, Statistics.txt, Output.txt*
+
+
+
+Step 3: Paste the ash you just copied in "input(RLE).txt"
+
+You should open to a blank txt file and paste the ash's RLE file into it
+
+
+
+Step 4: Run "RLE2PT.exe"
+
+This converts the RLE format to Plaintext and you should see the previously blank "input(Plaintext).txt" becomes filled.
+
+**If input(Plaintext).txt remains blank, then it means RLE2PT.exe crashed, and you would need to select a smaller portion of the ash, smaller than 1000x1000. 
+
+
+
+
+
+Step 5: Run "Main.exe"
+
+This is the analyzing program. Wait for it to finish.
+
+
+
+
+
+Step 6: The result
+
+Open "output.txt" to see the cleaned ash in Plaintext format. You can press Ctrl+A to select the entire pattern then copy it back to Golly for further investigation.
+
+Open "Statistics.txt" for the statistics of the ash analyzed by the program.
+
+
+
+
+Done! Thank you for using my program!
+
+Wish Lin, 2021/12/11
