@@ -1,0 +1,26 @@
+Bounding box:  849x797
+Initial Population:  8317
+Initial Density:  1.22914%
+End Population:  116
+End Density:  0.0171432%
+
+98.6053% Initial ash deleted
+1.39473% Initial ash remaining
+
+Block count:  628
+Vertical Blinker count:  339
+Horizontal Blinker count:  330
+Vertical Beehive count:  164
+Horizontal Beehive count:  177
+LU Loaf count:  27
+RU Loaf count:  29
+LD Loaf count:  28
+RD Loaf count:  21
+LU Boat count:  21
+RU Boat count:  23
+LD Boat count:  28
+RD Boat count:  19
+Tub count:  25
+Pond count:  23
+LURD Ship count:  10
+RULD Ship count:  17
