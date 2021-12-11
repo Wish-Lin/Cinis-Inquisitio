@@ -4,7 +4,7 @@ Other programs that output RLE format when you copy patterns from them should al
 Also I am not an English native speaker, so please forgive me if I make any langauge related errors. Thank you.
 
 
-
+!!If your ash is already in Plaintext format, you can paste it to "Plaintext.txt" and directly go to Step 5, just make sure all headers on it is removed!!
 
 
 Step 1: Copy the ash you want to analyze
@@ -25,9 +25,9 @@ Step 2: Run "Clear.exe" to clear the I/O txt's datas from the last run.
 
 
 
-Step 3: Paste the ash you just copied in "input(RLE).txt"
+Step 3: Paste the ash you just copied into "input(RLE).txt"
 
-You should open to a blank txt file and paste the ash's RLE file into it, *then save the txt*
+You should open to a blank txt file and paste the ash's RLE file into it, *then save the txt.*
 
 
 
@@ -43,7 +43,7 @@ This converts the RLE format to Plaintext and you should see the previously blan
 
 Step 5: Run "Main.exe"
 
-This is the analyzing program. Wait for it to finish.
+This is the analyzing program which takes in Plaintext and outputs Plaintext. Wait for it to finish.
 
 
 
