@@ -35,8 +35,9 @@ Step 4: Run "RLE2PT.exe"
 
 This converts the RLE format to Plaintext and you should see the previously blank "input(Plaintext).txt" becomes filled.
 
-**If input(Plaintext).txt remains blank, then it means RLE2PT.exe crashed, and you would need to select a smaller portion of the ash, smaller than 1000x1000. 
-
+**********
+If input(Plaintext).txt remains blank, then it means RLE2PT.exe crashed, and you would need to select a smaller portion of the ash, smaller than 1000x1000. 
+**********
 
 
 
