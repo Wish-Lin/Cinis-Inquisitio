@@ -16,6 +16,6 @@ This size limit will be improved in the next version once it is more optimized.
 
 **Bug: For still lifes such as block on dock or hive on dock, this program will view the block and beehive as independent and erase it, leaving only the dock behind in the output. Same goes for similar cases in other still lives**
 
-Depending on your computer's efficiency, the program may take a while to finish the analyzing.
+Depending on your computer's efficiency, the program may take a while to finish analyzing.
 
 v0.9 Release date: 2021/12/11
