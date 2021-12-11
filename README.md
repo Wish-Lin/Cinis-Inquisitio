@@ -14,6 +14,8 @@ This version of the program is still in not optimized yet, thus it can only deal
 
 This size limit will be improved in the next version once it is more optimized.
 
+# Bug: For still lifes such as block on dock or hive on dock, this program will view the block as independent and erase it, leaving only the dock behind in the output 
+
 Depending on your computer's efficiency, the program may take a while to finish the analyzing.
 
 v0.9 Release date: 2021/12/11
