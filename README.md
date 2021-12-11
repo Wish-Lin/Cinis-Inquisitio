@@ -2,8 +2,8 @@
 
 Cinis Inquisitio is a simple Conway's Game of Life ash cleaning/analyzing program that works with Golly, written in C++ by Wish Lin
 
--This program can analyze the ash left behind by a soup or reaction, erase the 8 most common ash objects(block,blinker,beehive,loaf,boat,ship,tub and pond), and output a cleaned ash for further inspection.
--Besides cleaning ashes, the program also documents how many times those 8 still lives appear, alongside some other data such as population and density.
+- This program can analyze the ash left behind by a soup or reaction, erase the 8 most common ash objects(block,blinker,beehive,loaf,boat,ship,tub and pond), and output a cleaned ash for further inspection.
+- Besides cleaning ashes, the program also documents how many times those 8 still lives appear, alongside some other data such as population and density.
 
 **After downloading, please read "Usermanual.txt" for details on how to use this program**
 
