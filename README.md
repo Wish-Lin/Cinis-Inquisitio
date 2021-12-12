@@ -14,7 +14,9 @@ This version of the program is still in not optimized yet, thus it can only deal
 
 This size limit will be improved in the next version once it is more optimized.
 
-**Bug: For still lifes such as block on dock or hive on dock, this program will view the block and beehive as independent and erase it, leaving only the dock behind in the output. Same goes for similar cases in other still lives**
+**Bug: For still lifes such as block on dock or hive on dock, this program will view the block and beehive as independent and erase it, leaving only the dock behind in the output. Same goes for similar cases in other still lives.**
+
+**Bug: In one of the states of the pulsar, four ships is seen in the middle. This program count them as four ships, leaving 8 L shaped polyomino behind in the output.**
 
 Depending on your computer's efficiency, the program may take a while to finish analyzing.
 
