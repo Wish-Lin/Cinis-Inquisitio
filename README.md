@@ -14,7 +14,7 @@ This version of the program is still in not optimized yet, thus it can only deal
 
 This size limit will be improved in the next version once it is more optimized.
 
-**Bug: For stable objects that consists of smaller still lives mentioned above, the still lives will be counted and deleted. Example: Any "xxx on dock" will have its still life part removed and only the dock left. 2 of the 3 states of pulsar contains blinkers and ships respectively, making the same bug occur**
+**Bug: For stable objects that consists of smaller still lives mentioned above, the still lives will be counted and deleted. Example: Any "xxx on dock" will have its still life part removed and only the dock left. 2 of the 3 states of pulsar contains blinkers and ships respectively, making the same bug occur.**
 
 Depending on your computer's efficiency, the program may take a while to finish analyzing.
 
