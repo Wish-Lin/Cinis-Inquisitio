@@ -8,14 +8,12 @@ Cinis Inquisitio is a simple Conway's Game of Life ash cleaning/analyzing progra
 **After downloading, please read "Usermanual.txt" for details on how to use this program**
 
 
-# v0.9 note: 
+# v0.9.1 note: 
 
-This version of the program is still in not optimized yet, thus it can only deal with ashes with a bounding box smaller than 1000x1000, anything bigger than that will almost always result in it crashing.
-
-This size limit will be improved in the next version once it is more optimized.
+This version of the program can deal with ashes with the size of about 5000x5000 without any problems. The theoretical upper limit is 63245x63245.
 
 **Bug: For stable objects that consists of smaller still lives mentioned above, the still lives will be counted and deleted. Example: Any "xxx on dock" will have its still life part removed and only the dock left. 2 of the 3 states of pulsar contains blinkers and ships respectively, making the same bug occur.**
 
 Depending on your computer's efficiency, the program may take a while to finish analyzing.
 
-v0.9 Release date: 2021/12/11
+v0.9.1 Release date: 2021/12/28
