@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include<vector>
 #include<fstream> 
 using namespace std;
 int main(){
@@ -16,7 +17,7 @@ int main(){
 	STATS.open("Statistics.txt",ios::out | ios::trunc);
 	getline (INPUT, buffer);
 	sscanf(buffer.c_str(),"%d %d",&x,&y);
-	char map[y][x];
+	vector<vector<char>> map( y , vector<char> (x));
 	for(int i = 0;i<y;i++){
 		getline(INPUT, buffer);
 		for(int j = 0;j<x;j++){
@@ -46,11 +47,10 @@ int main(){
 // 5 6 7
 //	
 		if(map[i][j] == 'O'){
-			
 			//block start (123)
 			if(map[i+1][j] == 'O' && map[i+1][j+1] == 'O' && map[i][j+1] == 'O' && map[i+1][j-1] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+1] == '.'){
 				if(map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-1] == '.' && map[i][j+2] == '.' && map[i+1][j-1] == '.' && map[i+1][j+2] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+1] == '.' && map[i+2][j+2] == '.'){
-					cout<<"Block found at ("<<i<<","<<j<<")\n";
+					cout<<"Block found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i+1][j] = '.';
 					map[i][j+1] = '.';
@@ -63,7 +63,7 @@ int main(){
 			//blinker vertical start (16)
 			if(map[i+1][j] == 'O' && map[i+1][j+1] == '.' && map[i][j+1] == '.' && map[i+1][j-1] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == 'O' && map[i+2][j+1] == '.'){
 				if(map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i][j-1] == '.' && map[i][j+1] == '.' && map[i+1][j-1] == '.' && map[i+1][j+1] == '.' && map[i+2][j-1] == '.' && map[i+2][j+1] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.'){
-					cout<<"Vertical Blinker found at ("<<i<<","<<j<<")\n";
+					cout<<"Vertical Blinker found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i+1][j] = '.';
 					map[i+2][j] = '.';
@@ -75,7 +75,7 @@ int main(){
 			//blinker horizontal start (3)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == '.' && map[i][j+1] == 'O' && map[i+1][j-1] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+1] == '.'){
 				if(map[i-1][j-1] == '.' && map[i][j-1] == '.' && map[i+1][j-1] == '.' && map[i-1][j] == '.' && map[i+1][j] == '.' && map[i-1][j+1] == '.' && map[i+1][j+1] == '.' && map[i-1][j+2] == '.' && map[i+1][j+2] == '.' && map[i-1][j+3] == '.' && map[i][j+3] == '.' && map[i+1][j+3] == '.'){
-					cout<<"Horizontal Blinker found at ("<<i<<","<<j<<")\n";
+					cout<<"Horizontal Blinker found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i][j+2] = '.';
@@ -87,7 +87,7 @@ int main(){
 			//beehive vertical start (2457)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i][j+1] == '.' && map[i+1][j-1] == 'O' && map[i+2][j-1] == 'O' && map[i+2][j] == '.' && map[i+2][j+1] == 'O'){
 				if(map[i+3][j] =='O' && map[i][j-1] =='.' && map[i][j+1] =='.' && map[i+3][j-1] =='.' && map[i+3][j+1] =='.' && map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-2] == '.' && map[i][j+2] == '.' && map[i+1][j-2] == '.' && map[i+1][j+2] == '.' && map[i+2][j-2] == '.' && map[i+2][j+2] == '.' && map[i+3][j-2] == '.' && map[i+3][j+2] == '.' && map[i+4][j-2] == '.' && map[i+4][j-1] == '.' && map[i+4][j] == '.' && map[i+4][j+1] == '.' && map[i+4][j+2] == '.'){ //probably unnecessary [i+3][j]'O' identification at front
-					cout<<"Vertical Beehive found at ("<<i<<","<<j<<")\n";
+					cout<<"Vertical Beehive found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i+1][j-1] = '.';
 					map[i+1][j+1] = '.';
@@ -102,7 +102,7 @@ int main(){
 			//beehive horizontal start (3467)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == '.' && map[i][j+1] == 'O' && map[i+1][j-1] == 'O' && map[i+2][j-1] == '.' && map[i+2][j] == 'O' && map[i+2][j+1] == 'O'){
 				if(map[i+1][j+2] =='O' && map[i][j-1] == '.' && map[i][j+2] == '.' && map[i+2][j-1] == '.' && map[i+2][j+2] == '.' && map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i-1][j+3] == '.' && map[i][j-2] == '.' && map[i][j+3] == '.' && map[i+1][j-2] == '.' && map[i+1][j+3] == '.' && map[i+2][j-2] == '.' && map[i+2][j+3] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.' && map[i+3][j+3] == '.'){ //probably unnecessary [i+1][j+2]'O' identification at front
-					cout<<"Horizontal Beehive found at ("<<i<<","<<j<<")\n";
+					cout<<"Horizontal Beehive found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i+1][j-1] = '.';
@@ -117,7 +117,7 @@ int main(){
 			//tub start (246)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i][j+1] == '.' && map[i+1][j-1] == 'O' && map[i+2][j-1] == '.' && map[i+2][j] == 'O' && map[i+2][j+1] == '.'){
 				if(map[i][j-1] == '.' && map[i][j+1] == '.' && map[i+2][j-1] == '.' && map[i+2][j+1] == '.' && map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-2] == '.' && map[i][j+2] == '.' && map[i+1][j-2] == '.' && map[i+1][j+2] == '.' && map[i+2][j-2] == '.' && map[i+2][j+2] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.'){
-					cout<<"Tub found at ("<<i<<","<<j<<")\n";
+					cout<<"Tub found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i+1][j-1] = '.';
 					map[i+1][j+1] = '.';
@@ -130,7 +130,7 @@ int main(){
 			//boat lu start (137)
 			if(map[i+1][j] == 'O' && map[i+1][j+1] == '.' && map[i][j+1] == 'O' && map[i+1][j-1] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+1] == 'O'){
 				if(map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i-1][j+3] == '.' && map[i][j-1] == '.' && map[i][j+2] == '.' && map[i][j+3] == '.' && map[i+1][j-1] == '.' && map[i+1][j+1] == '.' && map[i+1][j+2] == 'O' && map[i+1][j+3] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+2] == '.' && map[i+2][j+3] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.' && map[i+3][j+3] == '.'){
-					cout<<"LU Boat found at ("<<i<<","<<j<<")\n";
+					cout<<"LU Boat found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i+1][j] = '.';
@@ -144,7 +144,7 @@ int main(){
 			//boat ru start (2346)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i][j+1] == 'O' && map[i+1][j-1] == 'O' && map[i+2][j-1] == '.' && map[i+2][j] == 'O' && map[i+2][j+1] == '.'){
 				if(map[i][j-1] == '.' && map[i][j+1] == 'O' && map[i+2][j-1] == '.' && map[i+2][j+1] == '.' && map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-2] == '.' && map[i][j+2] == '.' && map[i+1][j-2] == '.' && map[i+1][j+2] == '.' && map[i+2][j-2] == '.' && map[i+2][j+2] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.'){
-					cout<<"RU Boat found at ("<<i<<","<<j<<")\n";
+					cout<<"RU Boat found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i+1][j-1] = '.';
@@ -158,7 +158,7 @@ int main(){
 			//boat ld start (2456)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i][j+1] == '.' && map[i+1][j-1] == 'O' && map[i+2][j-1] == 'O' && map[i+2][j] == 'O' && map[i+2][j+1] == '.'){
 				if(map[i][j-1] == '.' && map[i][j+1] == '.' && map[i+2][j-1] == 'O' && map[i+2][j+1] == '.' && map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-2] == '.' && map[i][j+2] == '.' && map[i+1][j-2] == '.' && map[i+1][j+2] == '.' && map[i+2][j-2] == '.' && map[i+2][j+2] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.'){
-					cout<<"LD Boat found at ("<<i<<","<<j<<")\n";
+					cout<<"LD Boat found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i+1][j-1] = '.';
 					map[i+1][j+1] = '.';
@@ -172,7 +172,7 @@ int main(){
 			//boat rd start (2467)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i][j+1] == '.' && map[i+1][j-1] == 'O' && map[i+2][j-1] == '.' && map[i+2][j] == 'O' && map[i+2][j+1] == 'O'){
 				if(map[i][j-1] == '.' && map[i][j+1] == '.' && map[i+2][j-1] == '.' && map[i+2][j+1] == 'O' && map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-2] == '.' && map[i][j+2] == '.' && map[i+1][j-2] == '.' && map[i+1][j+2] == '.' && map[i+2][j-2] == '.' && map[i+2][j+2] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.'){
-					cout<<"RD Boat found at ("<<i<<","<<j<<")\n";
+					cout<<"RD Boat found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i+1][j-1] = '.';
 					map[i+1][j+1] = '.';
@@ -186,7 +186,7 @@ int main(){
 			//ship lurd start (137)
 			if(map[i+1][j] == 'O' && map[i+1][j+1] == '.' && map[i][j+1] == 'O' && map[i+1][j-1] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+1] == 'O'){
 				if(map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i-1][j+3] == '.' && map[i][j-1] == '.' && map[i][j+2] == '.' && map[i][j+3] == '.' && map[i+1][j-1] == '.' && map[i+1][j+1] == '.' && map[i+1][j+2] == 'O' && map[i+1][j+3] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+2] == 'O' && map[i+2][j+3] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.' && map[i+3][j+3] == '.'){
-					cout<<"LURD Ship found at ("<<i<<","<<j<<")\n";
+					cout<<"LURD Ship found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i+1][j] = '.';
@@ -201,7 +201,7 @@ int main(){
 			//ship ruld start (23456)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i][j+1] == 'O' && map[i+1][j-1] == 'O' && map[i+2][j-1] == 'O' && map[i+2][j] == 'O' && map[i+2][j+1] == '.'){
 				if(map[i][j-1] == '.' && map[i][j+1] == 'O' && map[i+2][j-1] == 'O' && map[i+2][j+1] == '.' && map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-2] == '.' && map[i][j+2] == '.' && map[i+1][j-2] == '.' && map[i+1][j+2] == '.' && map[i+2][j-2] == '.' && map[i+2][j+2] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.'){
-					cout<<"RULD Ship found at ("<<i<<","<<j<<")\n";
+					cout<<"RULD Ship found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i+1][j-1] = '.';
@@ -216,7 +216,7 @@ int main(){
 			//loaf lu start (3457)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == '.' && map[i][j+1] == 'O' && map[i+1][j-1] == 'O' && map[i+2][j-1] == 'O' && map[i+2][j] == '.' && map[i+2][j+1] == 'O'){
 				if(map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i-1][j+3] == '.' && map[i][j-2] == '.' && map[i][j-1] == '.' && map[i][j] == 'O' && map[i][j+1] == 'O' && map[i][j+2] == '.' && map[i][j+3] == '.' && map[i+1][j-2] == '.' && map[i+1][j-1] == 'O' && map[i+1][j] == '.' && map[i+1][j+1] == '.' && map[i+1][j+2] == 'O' && map[i+1][j+3] == '.' && map[i+2][j-2] == '.' && map[i+2][j-1] == 'O' && map[i+2][j] == '.' && map[i+2][j+1] == 'O' && map[i+2][j+2] == '.' && map[i+2][j+3] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == 'O' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.' && map[i+3][j+3] == '.' && map[i+4][j-2] == '.' && map[i+4][j-1] == '.' && map[i+4][j] == '.' && map[i+4][j+1] == '.' && map[i+4][j+2] == '.'){
-					cout<<"LU Loaf found at ("<<i<<","<<j<<")\n";
+					cout<<"LU Loaf found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i+1][j-1] = '.';
@@ -232,7 +232,7 @@ int main(){
 			//loaf ru start (346)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == '.' && map[i][j+1] == 'O' && map[i+1][j-1] == 'O' && map[i+2][j-1] == '.' && map[i+2][j] == 'O' && map[i+2][j+1] == '.'){
 				if(map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i-1][j+3] == '.' && map[i][j-2] == '.' && map[i][j-1] == '.' && map[i][j] == 'O' && map[i][j+1] == 'O' && map[i][j+2] == '.' && map[i][j+3] == '.' && map[i+1][j-2] == '.' && map[i+1][j-1] == 'O' && map[i+1][j] == '.' && map[i+1][j+1] == '.' && map[i+1][j+2] == 'O' && map[i+1][j+3] == '.' && map[i+2][j-2] == '.' && map[i+2][j-1] == '.' && map[i+2][j] == 'O' && map[i+2][j+1] == '.' && map[i+2][j+2] == 'O' && map[i+2][j+3] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == '.' && map[i+3][j+1] == 'O' && map[i+3][j+2] == '.' && map[i+3][j+3] == '.' && map[i+4][j-1] == '.' && map[i+4][j] == '.' && map[i+4][j+1] == '.' && map[i+4][j+2] == '.' && map[i+4][j+3] == '.'){
-					cout<<"RU Loaf found at ("<<i<<","<<j<<")\n";
+					cout<<"RU Loaf found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i+1][j-1] = '.';
@@ -248,7 +248,7 @@ int main(){
 			//loaf ld start (245)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i][j+1] == '.' && map[i+1][j-1] == 'O' && map[i+2][j-1] == 'O' && map[i+2][j] == '.' && map[i+2][j+1] == '.'){
 				if(map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-2] == '.' && map[i][j-1] == '.' && map[i][j] == 'O' && map[i][j+1] == '.' && map[i][j+2] == '.' && map[i][j+3] == '.' && map[i+1][j-2] == '.' && map[i+1][j-1] == 'O' && map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i+1][j+2] == '.' && map[i+1][j+3] == '.' && map[i+2][j-2] == '.' && map[i+2][j-1] == 'O' && map[i+2][j] == '.' && map[i+2][j+1] == '.' && map[i+2][j+2] == 'O' && map[i+2][j+3] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == 'O' && map[i+3][j+1] == 'O' && map[i+3][j+2] == '.' && map[i+3][j+3] == '.' && map[i+4][j-2] == '.' && map[i+4][j-1] == '.' && map[i+4][j] == '.' && map[i+4][j+1] == '.' && map[i+4][j+2] == '.' && map[i+4][j+3] == '.'){
-					cout<<"LD Loaf found at ("<<i<<","<<j<<")\n";
+					cout<<"LD Loaf found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i+1][j-1] = '.';
 					map[i+1][j+1] = '.';
@@ -264,7 +264,7 @@ int main(){
 			//loaf rd start (247)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i][j+1] == '.' && map[i+1][j-1] == 'O' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+1] == 'O'){
 				if(map[i-1][j-3] == '.' && map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i][j-3] == '.' && map[i][j-2] == '.' && map[i][j-1] == '.' && map[i][j] == 'O' && map[i][j+1] == '.' && map[i][j+2] == '.' && map[i+1][j-3] == '.' && map[i+1][j-2] == '.' && map[i+1][j-1] == 'O' && map[i+1][j] == '.' && map[i+1][j+1] == 'O' && map[i+1][j+2] == '.' && map[i+2][j-3] == '.' && map[i+2][j-2] == 'O' && map[i+2][j-1] == '.' && map[i+2][j] == '.' && map[i+2][j+1] == 'O' && map[i+2][j+2] == '.' && map[i+3][j-3] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == 'O' && map[i+3][j] == 'O' && map[i+3][j+1] == '.' && map[i+3][j+2] == '.' && map[i+4][j-3] == '.' && map[i+4][j-2] == '.' && map[i+4][j-1] == '.' && map[i+4][j] == '.' && map[i+4][j+1] == '.' && map[i+4][j+2] == '.'){
-					cout<<"RD Loaf found at ("<<i<<","<<j<<")\n";
+					cout<<"RD Loaf found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i+1][j-1] = '.';
 					map[i+1][j+1] = '.';
@@ -280,7 +280,7 @@ int main(){
 			//pond start (345)
 			if(map[i+1][j] == '.' && map[i+1][j+1] == '.' && map[i][j+1] == 'O' && map[i+1][j-1] == 'O' && map[i+2][j-1] == 'O' && map[i+2][j] == '.' && map[i+2][j+1] == '.'){
 				if(map[i-1][j-2] == '.' && map[i-1][j-1] == '.' && map[i-1][j] == '.' && map[i-1][j+1] == '.' && map[i-1][j+2] == '.' && map[i-1][j+3] == '.' && map[i][j-2] == '.' && map[i][j-1] == '.' && map[i][j] == 'O' && map[i][j+1] == 'O' && map[i][j+2] == '.' && map[i][j+3] == '.' && map[i+1][j-2] == '.' && map[i+1][j-1] == 'O' && map[i+1][j] == '.' && map[i+1][j+1] == '.' && map[i+1][j+2] == 'O' && map[i+1][j+3] == '.' && map[i+2][j-2] == '.' && map[i+2][j-1] == 'O' && map[i+2][j] == '.' && map[i+2][j+1] == '.' && map[i+2][j+2] == 'O' && map[i+2][j+3] == '.' && map[i+3][j-2] == '.' && map[i+3][j-1] == '.' && map[i+3][j] == 'O' && map[i+3][j+1] == 'O' && map[i+3][j+2] == '.' && map[i+3][j+3] == '.' && map[i+4][j-2] == '.' && map[i+4][j-1] == '.' && map[i+4][j] == '.' && map[i+4][j+1] == '.' && map[i+4][j+2] == '.'&& map[i+4][j+3] == '.'){
-					cout<<"Pond found at ("<<i<<","<<j<<")\n";
+					cout<<"Pond found at ("<<j<<","<<i<<")\n";
 					map[i][j] = '.';
 					map[i][j+1] = '.';
 					map[i+1][j-1] = '.';
@@ -299,9 +299,6 @@ int main(){
 	}
 }
 	
-
-
-
 
 
 
@@ -375,4 +372,3 @@ cin.sync();
 cin.get();
 return 0;
 }
-
