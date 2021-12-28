@@ -1,30 +1,8 @@
 #include<iostream>
+#include<cctype>
+#include<vector>
 #include<fstream> 
 using namespace std;
-
-string solve(string s) {                   //Huge thanks to https://helloacm.com/c-run-length-decoding-algorithm/ for this decompressing function
-    int i = 0;
-    string ans = "";
-    while (i < s.size()) {
-        int j = i;
-        while (isdigit(s[j]) && (j < s.size())) {
-            j ++;
-        }
-        int a = stoi(s.substr(i, j - i + 1));
-        int k = j;
-        while (isalpha(s[k]) && k < s.size()) {
-            k ++;
-        }
-        auto t = s.substr(j, k - j);
-        for (int k = 0; k < a; ++ k) {
-            ans += t;
-        }
-        i = k;
-    }    
-    return ans;
-}
-
-
 int main(){
 	ifstream INPUT;
 	ofstream OUTPUT;
@@ -34,75 +12,60 @@ int main(){
 	string buffer;
 	getline(INPUT, buffer);
 	sscanf(buffer.c_str(),"x = %d, y = %d, rule = B3/S23",&x,&y); //Extract size info
-	char map[y][x];
+	vector<vector<char>> map( y , vector<char> (x));
 	for(int i = 0;i<y;i++){
 		for(int j = 0;j<x;j++){
 			map[i][j] = '.';
 		}
 	}
 	//---------------decompression(start)------------------------------
-	string data;
-	int pos;
+int xpos = 0,ypos = 0;
+	int N,temp;
+	char C;
 	while(!INPUT.eof()){
-		getline(INPUT,buffer);
-		data += buffer;
-	}
-	//cout<<data<<"\n\n";
-	//------------Add 1s to the stream & turn $ into S and turn ! to l for the decompression function
-	for(int i = 0;i<data.length();i++){
-		if(data[i] == '$'){
-			data[i] = 'S';
-		}
-		else if(data[i] == '!'){
-			data[i] = 'l';
-		}
-	}
-	for(int i = 0;i<data.length();i++){
-		if(!isdigit(data[i]) && !isdigit(data[i+1])){
-			data.insert(i+1,"1");
-		}
-	}
-	if(!isdigit(data[0]))
-	data.insert(0,"1");
-	data.erase(data.length()-1,1);//erase the extra 1
-	//cout<<data<<"\n\n";
-	//-----------Decompression--------------
-	string expanded_data = solve(data);
-//	cout<<expanded_data<<"\n\n";
-	//------------Drawing it out on a blank map---------------
-	int xcor = 0,ycor = 0;
-	for(int i = 0;i<expanded_data.length();i++){
-		if(expanded_data[i] == 'S'){
-			xcor = 0;
-			ycor++;
-		}
-		else if(expanded_data[i] == 'b'){
-			xcor++;
-		} 
-		else if(expanded_data[i] == 'o'){
-			map[ycor][xcor] = 'O';
-			xcor++;
+		getline(INPUT, buffer);
+		for(int i = 0;i<buffer.length();i++){
+			N = 0; C = ' ';
+			temp = buffer[i];
+			if(temp == '!')
+			break;
+			else if(isdigit(temp) == true){
+				while(isdigit(temp) == true){
+					N = N*10+(int(temp)-48);  //add digits up
+					i++;
+					temp = buffer[i]; 
+				}
+				C = temp;
+			}
+			else if(isdigit(temp) == false){
+				N = 1;
+				C = temp;
+			}
+			//N and C complete
+			//-------------------------------Draw to map start
+			//cout<<N<<' '<<C<<endl;
+			if(C == '$'){
+				ypos+=N;
+				xpos = 0;
+			}
+			else if(C == 'b'){
+				xpos+=N;
+			}
+			else if(C == 'o'){
+				for(int k = 0;k<N;k++){
+					map[ypos][xpos+k] = 'O';
+				}
+				xpos+=N;
+			}
+			//-------------------------------Draw to map end
 		}
 	}
-	//--------------------------------------------------------
-/*	for(int i = 0;i<y;i++){
-		for(int j = 0;j<x;j++){
-			cout<<map[i][j];
-		}
-		cout<<endl;
-	}*/
-
-
 	OUTPUT<<x<<' '<<y<<'\n';
-	buffer.clear();
-	buffer.resize(x);
 	for(int i = 0;i<y;i++){
-		buffer.clear();
-	for(int j = 0;j<x;j++){
-		buffer+=map[i][j];
-	}
-	buffer+='\n';
-	OUTPUT<<buffer;
+		for(int j = 0;j<x;j++){
+			OUTPUT<<map[i][j];
+		}
+		OUTPUT<<"\n";
 	}
 	cout<<"Conversion complete. Enter anything to close the program\n";
 	cin.clear();
