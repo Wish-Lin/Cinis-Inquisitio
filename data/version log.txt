@@ -2,3 +2,5 @@ v0.1: Proof of concept. Can detect&delete blocks and blinkers.
 
 v0.9: First working version. Able to count and delete the top 8 most common ash object, leaving the interesting ones behind.
 Input bounding box: 1000x1000
+
+v0.9.1: Fixed the bounding box problem, the max bounding box it can handle is now well over 5000x5000, theoretically 64235*64235
